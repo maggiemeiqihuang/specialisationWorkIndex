@@ -13,6 +13,16 @@ html {
     margin: 0;
     padding: 0;
 }
+h1, h2, h3, h4, h5, h6 {
+    text-wrap: balance;
+}
+
+/*readability based on WCAG*/
+/*https://www.w3.org/WAI/WCAG21/Understanding/visual-presentation.html*/
+p, li, figcaption {
+    max-width: 80ch;
+}
+
 
 img,
 picture,
