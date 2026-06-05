@@ -29,40 +29,44 @@ body {
     font-family: 'Work Sans', sans-serif;
     line-height: 1.5;
     padding: 1rem;
-    display: grid;
-    grid-template:
-    "header header header" min-content
-    "nav main spacer"
-    "footer footer footer" min-content / max-content 1fr auto;
-    ;
+    display: flex;
+    flex-direction: column;
     gap: 1rem;
 }
 
 header {
-    grid-area: header;
     display: flex;
     justify-content: center;
     margin-block-end: 3rem;
 }
-h1 {
-    text-align: center;
+
+.mainNavContainer {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
 }
 
 nav {
-    grid-area: nav;
     display: flex;
     flex-direction: column;
+    min-width: fit-content;
+    flex: 1;
+    align-items: flex-end;
 }
 
 main {
-    grid-area: main;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
+aside {
+    visibility: hidden;
+    flex: 1;
+}
+
 footer {
-    grid-area: footer;
     display: flex;
     justify-content: center;
     margin-block-start: 3rem;
@@ -88,13 +92,6 @@ footer {
 
 /* expanded breakpoint : phone or tablet in landscape, desktop */
 @media (width < 1200px) {
-    body {
-        grid-template:
-        "header header header" min-content
-        "nav main spacer"
-        "footer footer footer" min-content / max-content 1fr auto;
-        ;
-    }
     header {
         margin-block-end: 2rem;
     }
@@ -104,16 +101,26 @@ footer {
 }
 /* medium breakpoint : tablet in portrait */
 @media (width < 840px) {
-    body {
-        grid-template:
-        "header header header" min-content
-        "nav nav nav" min-content
-        "main main main"
-        "footer footer footer" min-content / 1fr;
-    ;
-    }
     header {
         margin-block-end: 1rem;
+    }
+    .mainNavContainer {
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+    }
+    nav {
+        flex: 0;
+        width: 100%;
+        max-width: 80rch;
+        justify-content: space-between;
+        flex-direction: row;
+    }
+    main {
+        flex: 1;
+    }
+    aside {
+        flex: 0;
     }
     footer {
         margin-block-start: 1rem;
